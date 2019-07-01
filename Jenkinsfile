@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo 'Building.'
         sh 'chmod +x ./quickstart/gradlew'
-        //sh './quickstart/gradlew build -p quickstart/'
+        sh './quickstart/gradlew build -p quickstart/'
       }
     }
     stage('Tests') {
@@ -50,7 +50,7 @@ pipeline {
   post {
     always {
       echo 'This is a post action.'
-      emailext attachmentsPattern: 'quickstart/reports/tests/**/*', body: 'The test has finished', subject: 'TEST', to: 'enrique.humana@gmail.com'
+      emailext attachmentsPattern: 'quickstart/reports/tests/**/*', body: 'The test has finished', subject: 'TEST', to: 'regis_enrique@hotmail.com'
     }
   }
 }
