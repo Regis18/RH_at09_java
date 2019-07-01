@@ -28,16 +28,13 @@ pipeline {
         }
       }
     }
-    stage('Test') {
+    stage('Check') {
       steps {
-        echo 'Testing.'
+        echo 'Checking.'
+        sh './quickstart/gradlew check -p quickstart/'
       }
     }
-    stage('Deploy') {
-      steps {
-        echo 'Deploying.'
-      }
-    }
+
     stage('Assemble') {
       steps {
         sh './quickstart/gradlew assemble -p quickstart/'
