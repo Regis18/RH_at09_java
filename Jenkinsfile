@@ -5,6 +5,8 @@ pipeline {
       steps {
         echo 'Building.'
         sh 'cd quickstart'
+        sh 'ls'
+        sh 'chmod +x gradlew'
         sh './gradlew clean build'
       }
     }
