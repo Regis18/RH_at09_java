@@ -20,12 +20,12 @@ pipeline {
     }
     stage('Assemble') {
       steps {
-        sh './gradlew assemble'
+        sh './quickstart/gradlew assemble'
       }
     }
     stage('Unit Test') {
       steps {
-        sh './gradlew test'
+        sh './quickstart/gradlew test'
       }
     }
   }
