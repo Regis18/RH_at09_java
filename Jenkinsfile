@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo 'Building.'
         sh 'chmod +x ./quickstart/gradlew'
-        sh './quickstart/gradlew build -p quickstart/'
+        //sh './quickstart/gradlew build -p quickstart/'
       }
     }
     stage('Tests') {
