@@ -47,10 +47,4 @@ pipeline {
       }
     }
   }
-  post {
-    always {
-      echo 'This is a post action.'
-      emailext attachmentsPattern: 'quickstart/reports/tests/**/*', body: 'The test has finished', subject: 'TEST', to: 'enrique.humana@gmail.com'
-    }
-  }
 }
