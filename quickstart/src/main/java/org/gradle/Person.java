@@ -20,6 +20,7 @@ public class Person {
 
     /**
      * Get Name.
+     * @return name String.
      */
     public String getName() {
         return name;
