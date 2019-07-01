@@ -11,6 +11,7 @@ public class Person {
 
     /**
      * Constructor.
+     * @param name String.
      */
     public Person(final String name) {
         this.name = name;
