@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building.'
+        sh 'cd /home/ubuntu/RH_at09_java/quickstart'
         sh './gradlew clean build'
       }
     }
