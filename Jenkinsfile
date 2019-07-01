@@ -4,8 +4,10 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building.'
+        sh 'ls'
         sh 'cd quickstart'
         sh 'ls'
+        sh 'cd quickstart'
         sh 'chmod +x gradlew'
         sh './gradlew clean build'
       }
