@@ -1,7 +1,13 @@
 pipeline {
   agent any
   stages {
-
+    stage('Build') {
+      steps {
+        echo 'Building.'
+        sh 'chmod +x ./quickstart/gradlew'
+        sh './quickstart/gradlew build -p quickstart/'
+      }
+    }
     stage('Tests') {
       parallel {
         stage('Unit Test 1') {
@@ -44,13 +50,6 @@ pipeline {
     stage('Unit Test') {
       steps {
         sh './quickstart/gradlew test -p quickstart/'
-      }
-    }
-    stage('Build') {
-      steps {
-        echo 'Building.'
-        sh 'chmod +x ./quickstart/gradlew'
-        sh './quickstart/gradlew build -p quickstart/'
       }
     }
   }
