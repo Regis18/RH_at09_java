@@ -1,18 +1,12 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
-      steps {
-        echo 'Building.'
-        sh 'chmod +x ./quickstart/gradlew'
-        sh './quickstart/gradlew build -p quickstart/'
-      }
-    }
+
     stage('Tests') {
       parallel {
         stage('Unit Test 1') {
           steps {
-             sh './quickstart/gradlew test -p quickstart/'
+             sh './quickstart/gradlew test -p quickstart'
           }
           post {
             always{
@@ -23,7 +17,7 @@ pipeline {
         }
         stage('Unit Test 2') {
           steps {
-            sh './quickstart/gradlew test -p quickstart/'
+            sh './quickstart/gradlew test -p quickstart'
           }
         }
       }
@@ -31,19 +25,32 @@ pipeline {
     stage('Check') {
       steps {
         echo 'Checking.'
-        sh './quickstart/gradlew check -p quickstart/'
+        sh './quickstart/gradlew check -p quickstart'
+      }
+    }
+
+    stage('Sonarqube') {
+      steps {
+        sh './quickstart/gradlew sonarqube -p quickstart'
       }
     }
 
     stage('Assemble') {
       steps {
-        sh './quickstart/gradlew assemble -p quickstart/'
+        sh './quickstart/gradlew assemble -p quickstart'
         archiveArtifacts 'quickstart/build/libs/*.jar'
       }
     }
     stage('Unit Test') {
       steps {
         sh './quickstart/gradlew test -p quickstart/'
+      }
+    }
+    stage('Build') {
+      steps {
+        echo 'Building.'
+        sh 'chmod +x ./quickstart/gradlew'
+        sh './quickstart/gradlew build -p quickstart/'
       }
     }
   }
